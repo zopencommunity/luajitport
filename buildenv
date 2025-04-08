@@ -10,6 +10,9 @@
 ## Specify the default build line, either 'DEV' or 'STABLE' (default: STABLE)
 export ZOPEN_BUILD_LINE="DEV"
 
+## Force a full clone (shallow clone fails with luajit)
+export ZOPEN_CLONE_FULL="yes"
+
 ## Required IF ZOPEN_BUILD_LINE='STABLE'
 export ZOPEN_STABLE_URL=""  # Specify the stable build URL (either git or tarball)
 export ZOPEN_STABLE_DEPS="" # Specify the stable build dependencies.
@@ -34,9 +37,9 @@ export ZOPEN_SYSTEM_PREREQ=""
 ### Build stage control environment variables
 ###
 
-#export ZOPEN_BOOTSTRAP="skip" ## Bootstrap program to run (defaults to './bootstrap')
-#export ZOPEN_CHECK="skip"     ## Check program to run (defaults to 'make')
-#export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './configure')
+export ZOPEN_BOOTSTRAP="skip" ## Bootstrap program to run (defaults to './bootstrap')
+export ZOPEN_CHECK="skip"     ## Check program to run (defaults to 'make')
+export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './configure')
 #export ZOPEN_INSTALL="skip"   ## Installation program to run (defaults to 'make')
 #export ZOPEN_MAKE="skip"      ## Build program to run (defaults to 'make')
 #export ZOPEN_CLEAN=""         ## Clean up program to run (defaults to 'make')
