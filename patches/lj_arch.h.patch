@@ -1,0 +1,74 @@
+diff --git a/src/lj_arch.h b/src/lj_arch.h
+index a4eecf27..1f975194 100644
+--- a/src/lj_arch.h
++++ b/src/lj_arch.h
+@@ -31,6 +31,8 @@
+ #define LUAJIT_ARCH_mips32	6
+ #define LUAJIT_ARCH_MIPS64	7
+ #define LUAJIT_ARCH_mips64	7
++#define LUAJIT_ARCH_S390X	8
++#define LUAJIT_ARCH_s390x	8
+ 
+ /* Target OS. */
+ #define LUAJIT_OS_OTHER		0
+@@ -39,6 +41,7 @@
+ #define LUAJIT_OS_OSX		3
+ #define LUAJIT_OS_BSD		4
+ #define LUAJIT_OS_POSIX		5
++#define LUAJIT_OS_ZOS		6
+ 
+ /* Number mode. */
+ #define LJ_NUMMODE_SINGLE	0	/* Single-number mode only. */
+@@ -65,6 +68,8 @@
+ #define LUAJIT_TARGET	LUAJIT_ARCH_MIPS64
+ #elif defined(__mips__) || defined(__mips) || defined(__MIPS__) || defined(__MIPS)
+ #define LUAJIT_TARGET	LUAJIT_ARCH_MIPS32
++#elif defined(__370__) || defined(__s390x__) || defined(__s390x) /* Linux Z uses __s390x__ but z/OS uses __370__ */
++#define LUAJIT_TARGET	LUAJIT_ARCH_S390X
+ #else
+ #error "Architecture not supported (in this version), see: https://luajit.org/status.html#architectures"
+ #endif
+@@ -96,6 +101,8 @@
+ #elif defined(__QNX__)
+ #define LJ_TARGET_QNX		1
+ #define LUAJIT_OS	LUAJIT_OS_POSIX
++#elif defined(__MVS__)
++#define LUAJIT_OS	LUAJIT_OS_ZOS
+ #else
+ #define LUAJIT_OS	LUAJIT_OS_OTHER
+ #endif
+@@ -113,6 +120,8 @@
+ #define LJ_OS_NAME	"BSD"
+ #elif LUAJIT_OS == LUAJIT_OS_POSIX
+ #define LJ_OS_NAME	"POSIX"
++#elif LUAJIT_OS == LUAJIT_ZOS
++#define LJ_OS_NAME	"z/OS"
+ #else
+ #define LJ_OS_NAME	"Other"
+ #endif
+@@ -274,6 +283,25 @@
+ 
+ #define LJ_ARCH_VERSION		80
+ 
++#elif LUAJIT_TARGET == LUAJIT_ARCH_S390X
++
++#define LJ_ARCH_BITS		64
++#define LJ_ARCH_NAME		"s390x"
++#define LJ_ARCH_ENDIAN		LUAJIT_BE
++#define LJ_TARGET_S390X		1
++#ifdef __MVS__
++#define LJ_TARGET_EHRETREG	0xe
++#else
++#define LJ_TARGET_EHRETREG	0xe
++#endif
++#define LJ_TARGET_JUMPRANGE	32	/* +-2^32 = +-4GB (32-bit, halfword aligned) */
++#define LJ_TARGET_MASKSHIFT	1
++#define LJ_TARGET_MASKROT	1
++#define LJ_TARGET_UNALIGNED	1
++#define LJ_ARCH_NUMMODE		LJ_NUMMODE_DUAL
++#define LJ_TARGET_GC64		1
++#define LJ_ARCH_NOJIT		1	/* NYI */
++
+ #elif LUAJIT_TARGET == LUAJIT_ARCH_PPC
+ 
+ #ifndef LJ_ARCH_ENDIAN
