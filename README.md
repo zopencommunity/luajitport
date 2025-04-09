@@ -8,7 +8,7 @@ LuaJIT — a Just-In-Time Compiler for Lua.
 
 To learn a bit about the Lua JIT:
 
-- Mike Pall explains why the dynamic assembler [dynasm]() is 
+- Mike Pall explains why the dynamic assembler [dynasm](https://luajit.org/dynasm.html) is 
 [very efficient](https://web.archive.org/web/20141001203737/https://article.gmane.org/gmane.comp.lang.lua.general/75426)
   making it viable to not use the full JIT capability, but just use the interpreter mode.
 - YouTube video on [specific interesting things :)](https://www.youtube.com/watch?v=EaLboOUG9VQ). 
