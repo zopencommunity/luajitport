@@ -47,6 +47,10 @@ export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './co
 ## Turn off multi-compile while getting stuff to build and also keep compiling (get past the .S failure)
 export ZOPEN_MAKE_OPTS='-j1 -k'
 
+## Force target of z/OS 3.1 to use mmap
+
+export TARGET_CFLAGS='-mzos-target=zosv3r1 -D__XPLAT -D_UNIX03_SOURCE=1 -D_XOPEN_SOURCE_EXTENDED=1'
+
 ###
 ### Required user-supplied functions
 ###
