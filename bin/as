@@ -7,6 +7,10 @@
 
 set -x
 set -e
+work_dir=$PWD
+
+echo "Working Directory: ${work_dir}"
+
 parms="$*"
 last_parm="${parms##* }"
 first_parms="${parms% *}"
@@ -19,5 +23,14 @@ err="/tmp/luajit_$$.err"
 # Remove comments (these lines are more than 80 characters)
 #
 grep -v '^#' "${input_as_file}" >"${output_as_file}"
-/bin/as "${first_parms}" "${output_as_file}" 2>"${err}"
+
+#
+# Temporarily create dummy assembler file
+#
+echo "@@LUA@1  ALIAS C'lj_vm_asm_begin'
+@@LUA@1 CSECT      ,
+@@LUA@1 AMODE      64
+@@LUA@1 RMODE      ANY
+         END" >"${output_as_file}"
+/bin/as -mGOFF "${first_parms}" "${output_as_file}" 2>"${err}"
 
