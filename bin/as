@@ -1,0 +1,23 @@
+#!/bin/env bash
+
+#
+# Hack 'gas' conversion to HLASM assembly suitable only
+# for output from LuaJIT
+#
+
+set -x
+set -e
+parms="$*"
+last_parm="${parms##* }"
+first_parms="${parms% *}"
+
+input_as_file="${last_parm}"
+output_as_file="/tmp/luajit_$$.s"
+err="/tmp/luajit_$$.err"
+
+#
+# Remove comments (these lines are more than 80 characters)
+#
+grep -v '^#' "${input_as_file}" >"${output_as_file}"
+/bin/as "${first_parms}" "${output_as_file}" 2>"${err}"
+
