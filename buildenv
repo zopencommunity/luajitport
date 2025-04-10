@@ -19,7 +19,7 @@ export ZOPEN_STABLE_DEPS="" # Specify the stable build dependencies.
 
 ## Required IF ZOPEN_BUILD_LINE='DEV'
 export ZOPEN_DEV_URL="https://luajit.org/git/luajit.git"   # Specify the dev build URL
-export ZOPEN_DEV_DEPS="zoslib make grep"  # Specify the dev build dependencies
+export ZOPEN_DEV_DEPS="zoslib make check_clang"  # Specify the dev build dependencies
 
 ## Specify a space-delimited list of applicable categories.
 ## See tool_categories.txt for valid options
@@ -44,6 +44,8 @@ export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './co
 #export ZOPEN_MAKE="skip"      ## Build program to run (defaults to 'make')
 #export ZOPEN_CLEAN=""         ## Clean up program to run (defaults to 'make')
 
+## Turn off multi-compile while getting stuff to build and also keep compiling (get past the .S failure)
+export ZOPEN_MAKE_OPTS='-j1 -k'
 
 ###
 ### Required user-supplied functions
