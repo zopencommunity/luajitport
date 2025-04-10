@@ -6,6 +6,8 @@ LuaJIT — a Just-In-Time Compiler for Lua.
 
 ## References courtesy of Ilya Leoshkevich
 
+- [Linux on Z ABI](https://github.com/IBM/s390x-abi)
+
 To learn a bit about the Lua JIT:
 
 - Mike Pall explains why the dynamic assembler [dynasm](https://luajit.org/dynasm.html) is 

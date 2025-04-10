@@ -33,6 +33,8 @@ They are copied for the most part from: https://github.com/LuaJIT/LuaJIT/pull/63
 - `src/lj_target_s390x.h` may be common but requires more investigation, in particular
   if the calling convention register values can be used.
 
+- `src/lj_mcode.c` removes `lj_mcode_sync` function, which isn't used by z/OS.
+  If it needs to be added back in, then __clear_cache equivalent will be necessary.
 - `src/Makefile` is a common change.
 - `src/host/buildvm.c` is a common change.
 - `src/jit/bcsave.lua` is a common change.
