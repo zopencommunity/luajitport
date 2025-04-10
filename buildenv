@@ -45,7 +45,7 @@ export ZOPEN_CONFIGURE="skip" ## Configuration program to run (defaults to './co
 #export ZOPEN_CLEAN=""         ## Clean up program to run (defaults to 'make')
 
 ## Turn off multi-compile while getting stuff to build and also keep compiling (get past the .S failure)
-export ZOPEN_MAKE_OPTS='-j1 -k --debug=jobs'
+export ZOPEN_MAKE_OPTS='-j1 -k --debug=print'
 
 ## Force target of z/OS 3.1 to use mmap
 

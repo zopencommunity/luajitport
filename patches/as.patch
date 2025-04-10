@@ -1,0 +1,11 @@
+diff --git a/bin/as b/bin/as
+new file mode 100755
+index 00000000..db89858f
+--- /dev/null
++++ b/bin/as
+@@ -0,0 +1,5 @@
++#!/bin/sh
++
++echo 'run the luajit as program'
++/bin/as $*
++

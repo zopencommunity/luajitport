@@ -6,6 +6,11 @@ They are copied for the most part from: https://github.com/LuaJIT/LuaJIT/pull/63
 
 ## Work to be done
 
+- Create an assembler that will process some form of _extended_ HLASM
+  that is easier to work with across the Linux on Z and z/OS teams.
+  Right now, this is just a simple script `bin/as` until we figure out
+  how much we want to generate true HLASM and how much we want to
+  generate 'gas' syntax assembler and just transform it to HLASM.
 - Create a z/OS version of the `dasm_xxx` routines in `dasm_s390x.h`. 
   These routines may be able to be common with Linux on Z where it is
   strictly instruction-set logic, but for things like linkage conventions
