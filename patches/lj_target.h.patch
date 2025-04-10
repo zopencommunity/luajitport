@@ -1,0 +1,13 @@
+diff --git a/src/lj_target.h b/src/lj_target.h
+index 47592432..6548816a 100644
+--- a/src/lj_target.h
++++ b/src/lj_target.h
+@@ -143,6 +143,8 @@ typedef uint32_t RegCost;
+ #include "lj_target_ppc.h"
+ #elif LJ_TARGET_MIPS
+ #include "lj_target_mips.h"
++#elif LJ_TARGET_S390X
++#include "lj_target_s390x.h"
+ #else
+ #error "Missing include for target CPU"
+ #endif

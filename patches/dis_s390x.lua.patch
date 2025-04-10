@@ -1,0 +1,7 @@
+diff --git a/src/jit/dis_s390x.lua b/src/jit/dis_s390x.lua
+new file mode 100644
+index 00000000..3c63033b
+--- /dev/null
++++ b/src/jit/dis_s390x.lua
+@@ -0,0 +1 @@
++-- Not yet implemented.
