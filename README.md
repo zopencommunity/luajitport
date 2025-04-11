@@ -4,6 +4,16 @@
 
 LuaJIT — a Just-In-Time Compiler for Lua.
 
+## Current Dev State
+
+- does not build yet. It gives a SIGKILL when trying to create a header
+  file because it is trying to run the minilua, which did not build.
+  You can get slightly farther if you set HOSTLUA in `src/Makefile` to
+  a fully-qualified installed lua, but then you will fail because there
+  is no `bitop` installed.
+  Probably both paths should be explored, but generating a proper minilua
+  seems a good start.
+
 ## References courtesy of Ilya Leoshkevich
 
 - [Linux on Z ABI](https://github.com/IBM/s390x-abi)
