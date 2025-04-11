@@ -1,5 +1,5 @@
 diff --git a/src/Makefile b/src/Makefile
-index 4a56d1e8..801669f2 100644
+index c83abfa0..7eea9385 100644
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -249,6 +249,9 @@ ifneq (,$(findstring LJ_TARGET_ARM64 ,$(TARGET_TESTARCH)))
@@ -20,13 +20,13 @@ index 4a56d1e8..801669f2 100644
  
  ifneq (,$(findstring LJ_TARGET_PS3 1,$(TARGET_TESTARCH)))
    TARGET_SYS= PS3
-@@ -354,6 +358,10 @@ else
+@@ -357,6 +361,10 @@ else
    ifeq (GNU/kFreeBSD,$(TARGET_SYS))
      TARGET_XLIBS+= -ldl
    endif
 +  ifeq (OS/390,$(TARGET_SYS))
 +    # On z/OS, (OS/390) we want to just run HLASM, not the integrated assembler
-+    ASOPTIONS+= -no-integrated-as -B$(shell pwd)/../bin
++    ASOPTIONS+= -no-integrated-as -B$(shell pwd)/../../bin
 +  endif
  endif
  endif

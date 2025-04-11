@@ -13,7 +13,7 @@ echo "Working Directory: ${work_dir}"
 
 parms="$*"
 last_parm="${parms##* }"
-first_parms="${parms% *}"
+first_parms=${parms% *}
 
 input_as_file="${last_parm}"
 output_as_file="/tmp/luajit_$$.s"
@@ -32,5 +32,5 @@ echo "@@LUA@1  ALIAS C'lj_vm_asm_begin'
 @@LUA@1 AMODE      64
 @@LUA@1 RMODE      ANY
          END" >"${output_as_file}"
-/bin/as -mGOFF "${first_parms}" "${output_as_file}" 2>"${err}"
+/bin/as -mGOFF ${first_parms} "${output_as_file}" 2>"${err}"
 
